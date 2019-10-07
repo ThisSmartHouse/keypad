@@ -31,7 +31,6 @@
 #include <Keypad.h>
 #include <Hash.h>
 #include <PubSubClient.h>
-#include "ArduinoJson.h"
 #include "app.h"
 
 bool ota_ready = false;
