@@ -212,6 +212,10 @@ void onKeypadEvent(KeypadEvent key)
 				mqtt->publish(config->state_topic, &key, 1);
 			}
 			lastState = RELEASED;
+
+			digitalWrite(LED_BUILTIN, HIGH);
+			delay(200);
+			digitalWrite(LED_BUILTIN, LOW);
 			break;
 		case HOLD:
 			char t[2];
@@ -221,6 +225,16 @@ void onKeypadEvent(KeypadEvent key)
 			t[1] = key;
 			mqtt->publish(config->state_topic, &t[0], 2);
 			lastState = HOLD;
+
+			digitalWrite(LED_BUILTIN, HIGH);
+			delay(200);
+			digitalWrite(LED_BUILTIN, LOW);
+			delay(200);
+			digitalWrite(LED_BUILTIN, HIGH);
+			delay(200);
+			digitalWrite(LED_BUILTIN, LOW);
+			delay(200);
+
 			break;
 	}
 
@@ -266,6 +280,7 @@ void setup()
     // Give the logger an NTP Manager so it can record timestamps with logs
     _ciot_log->setNTPManager(NTPManager);
     
+    pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop()
@@ -287,5 +302,5 @@ void loop()
 		otaManager->loop();
 	}
 
-
+	digitalWrite(LED_BUILTIN, LOW);
 }

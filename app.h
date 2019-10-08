@@ -61,6 +61,8 @@ typedef struct app_config_t {
 
 app_config_t *app_config = NULL;
 
+#define LED_BUILTIN 16
+
 static const uint8_t D0   = 16;
 static const uint8_t D1   = 5;
 static const uint8_t D2   = 4;
@@ -86,8 +88,8 @@ const char keymap[keypad_rows][keypad_cols] =
 	{ 'M', 'N', 'O', 'P' }
 };
 
-byte keypad_row_pins[keypad_rows] = {D0, D1, D2, D3};
-byte keypad_col_pins[keypad_cols] = {D4, D5, D6, D7};
+byte keypad_row_pins[keypad_rows] = {D1, D2, D3, D4};
+byte keypad_col_pins[keypad_cols] = {D5, D6, D7, D8};
 
 class CoogleIOT_Logger;
 class CoogleIOT_Wifi;
